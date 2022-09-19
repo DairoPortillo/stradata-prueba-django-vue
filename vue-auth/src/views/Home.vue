@@ -14,7 +14,7 @@
         <div class="alert alert-success" role="alert" v-if="data.statusOk">
           Exitoso con resultados
         </div>
-        <div class="alert alert-success" role="alert" v-if="data.statusEmpty">
+        <div class="alert alert-warning" role="alert" v-if="data.statusEmpty">
           Exitoso sin resultados
         </div>
       </div>

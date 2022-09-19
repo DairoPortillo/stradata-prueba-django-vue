@@ -2,7 +2,7 @@
   <form @submit.prevent="submit">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-    <input v-model="data.username" type="text" class="form-control" placeholder="Email" required>
+    <input v-model="data.username" type="text" class="form-control" placeholder="Username" required>
 
     <input v-model="data.password" type="password" class="form-control" placeholder="Password" required>
 
