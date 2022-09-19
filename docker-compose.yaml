@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql:latest'
+    container_name: mysql-stradata
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: stradata # The PostgreSQL user (useful to connect to the database)
+      MYSQL_PASSWORD: 123456 # The PostgreSQL password (useful to connect to the database)
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: stradata_db # The PostgreSQL default database (automatically created at first launch)
