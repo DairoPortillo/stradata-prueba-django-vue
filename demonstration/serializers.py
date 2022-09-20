@@ -14,6 +14,8 @@ class HistorialSerializer(serializers.ModelSerializer):
         source="user.username", read_only=True
     )
 
+    created = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+
     class Meta:
         model = Historial
         fields = '__all__'
@@ -22,6 +24,7 @@ class HistorialSerializer(serializers.ModelSerializer):
 class DetalleHistorialSerializer(serializers.ModelSerializer):
 
     resultados_historial = ResultadoHistorialSerializer(many=True, read_only=True)
+    created = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
 
     class Meta:
         model = Historial

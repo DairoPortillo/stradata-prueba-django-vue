@@ -1,5 +1,5 @@
 
-Comandos Base de datos
+Comandos para levantar Base de datos
 
 ```docker-compose up -d```
 
@@ -17,5 +17,7 @@ Comandos Django para correr los tests
 ```python manage.py test```
 
 Comandos para correr frontend
+
+```cd vue-auth```
 
 ```npm run dev```

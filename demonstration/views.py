@@ -34,10 +34,14 @@ class BuscarPersonaView(APIView):
         with transaction.atomic():
 
             ratio = 0
-            historial = Historial.objects.create(user=self.request.user, porcentaje=porcentaje)
+            historial = Historial.objects.create(
+                user=self.request.user,
+                porcentaje=porcentaje,
+                busqueda=nombre
+            )
 
             for persona in personas:
-                ratio = SequenceMatcher(None, persona["nombre"], nombre).ratio()
+                ratio = SequenceMatcher(None, persona["nombre"], nombre).ratio() * 100
                 persona.pop("id")
                 persona["ratio"] = ratio
                 if porcentaje != 0 and ratio < float(porcentaje):

@@ -18,6 +18,7 @@ class Historial(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.RESTRICT)
     porcentaje = models.FloatField(default=0.0)
+    busqueda = models.CharField(max_length=100, default='')
     created = models.DateTimeField(auto_now_add=True)
 
 

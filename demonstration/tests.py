@@ -14,6 +14,7 @@ def bearer_token():
     refresh = RefreshToken.for_user(user)
     return {"HTTP_AUTHORIZATION": f'Bearer {refresh.access_token}'}
 
+
 class BuscarPersonaTestCase(TestCase):
     def setUp(self):
         Persona.objects.create(**{
@@ -90,7 +91,7 @@ class HistorialTestCase(TestCase):
         self.assertEqual(response.data[0]['username'], "dairo")
         self.assertEqual(response.status_code, 200)
 
-        url = reverse("historial-detail", kwargs={'pk':response.data[0]['id']})
+        url = reverse("historial-detail", kwargs={'pk': response.data[0]['id']})
         response = self.client.get(
             url,
             format="json",

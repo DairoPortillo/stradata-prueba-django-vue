@@ -38,7 +38,7 @@
               <td>{{resultado.tipo_cargo}}</td>
               <td>{{resultado.departamento}}</td>
               <td>{{resultado.municipio}}</td>
-              <td>{{resultado.ratio * 100}}</td>
+              <td>{{resultado.ratio.toFixed(2)}}</td>
             </tr>
         </tbody>
       </table>
@@ -55,6 +55,7 @@ export default {
   name: "Home",
   setup() {
     const router = useRouter();
+    const store = useStore();
 
     const data = reactive({
       nombre: '',
@@ -66,7 +67,8 @@ export default {
 
     onMounted(async () => {
 
-      if (localStorage.getItem("token") == null || localStorage.token == "") await router.push('/login');
+      // if (!store.state.authenticated) await router.push('/login');
+      if (localStorage.getItem("token") == "" || localStorage.getItem("token") == undefined) await router.push('/login');
 
     });
 

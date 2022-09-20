@@ -1,17 +1,19 @@
 <template>
-  <form @submit.prevent="submit">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <div class="container">
+    <form @submit.prevent="submit">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-    <input v-model="data.username" type="text" class="form-control" placeholder="Username" required>
+      <input v-model="data.username" type="text" class="form-control" placeholder="Username" required>
 
-    <input v-model="data.password" type="password" class="form-control" placeholder="Password" required>
+      <input v-model="data.password" type="password" class="form-control" placeholder="Password" required>
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-  </form>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+  </div>
 </template>
 
 <script lang="ts">
-import {reactive} from 'vue';
+import {onMounted, reactive} from 'vue';
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
 
@@ -24,6 +26,14 @@ export default {
     });
     const router = useRouter();
     const store = useStore();
+
+    onMounted(async () => {
+
+
+      // if (!store.state.authenticated) await router.push('/login');
+      if (localStorage.getItem("token") != "" && localStorage.getItem("token") != undefined) await router.push('/');
+
+    });
 
     const submit = async () => {
       await fetch('http://localhost:8000/api/auth/', {
@@ -49,6 +59,7 @@ export default {
       data,
       submit
     }
+
   }
 }
 </script>
